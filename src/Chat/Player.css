@@ -1,0 +1,8 @@
+.Player-Card{
+    max-height: 225px;
+    max-width: 250px;
+    border: 2px;
+    border-style: solid;
+    padding: 5px;
+    margin: 5px;
+}

@@ -1,0 +1,9 @@
+.Avatar {
+    position: absolute;
+    bottom: 0;
+}
+
+.Avatar-pic {
+    max-height: 74px;
+    margin: 2px;
+}

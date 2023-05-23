@@ -1,0 +1,25 @@
+.speech {
+    font-size:  max(min(2vw, 16px), 11px);
+    color: black;
+    background: white;
+    position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    max-width: 290px;
+    max-height: 250px;
+}
+
+.speech::after {
+    content: "";
+    border: 20px solid transparent;
+    position: absolute;
+}
+
+.bottom.speech::after {
+    border-top-color: white;
+    border-bottom: 0;
+    bottom: -20px; left: 50%;
+    margin-left: -20px;
+}
+
