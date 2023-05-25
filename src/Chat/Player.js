@@ -10,7 +10,6 @@ const Player = ({user}) => {
     const { chatUpdate } = useContext(GameContext);
     const username = useRef(user);
     const chatQueue = useRef([]);
-    const timerId = useRef();
     const [spchBubTxt, setSpchBubTxt] = useState("");
 
     useEffect(() => {

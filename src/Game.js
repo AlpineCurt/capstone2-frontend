@@ -39,7 +39,6 @@ const Game = () => {
             } else if (msg.type === "chat") {
                 setChatUpdate({ name: msg.name, text: msg.text });
             }
-            //debugger;
         }
 
         ws.current.onclose = (evt) => {

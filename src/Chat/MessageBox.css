@@ -8,3 +8,7 @@
 .MessageBox-btn {
     margin: 3px;
 }
+
+.MessageBox-chatMsg {
+    width: min(max(200px, 50%))
+}
