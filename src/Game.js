@@ -16,9 +16,10 @@ const Game = () => {
     const [ gameMode, setGameMode ] = useState("lobby");
     const { currUser } = useContext(CurrUserContext);
     const username = useRef(null);
-    const [ players, setPlayers ] = useState([])
+    const [ players, setPlayers ] = useState([]);
+    const [ chatUpdate, setChatUpdate ] = useState({});
 
-    // Open websocket when first loaded
+    // Open and initialize websocket when first loaded
     useEffect(() => {
         username.current = currUser;
 
@@ -29,13 +30,14 @@ const Game = () => {
             ws.current.send(JSON.stringify(data));
         }
 
-        // Handler for receiving message from server
+        // Handler for RECEIVING MESSAGE from server
         ws.current.onmessage = (evt) => {
             const msg = JSON.parse(evt.data);
-            //debugger;
 
             if (msg.type === "playerUpdate") {
                 setPlayers(msg.players);
+            } else if (msg.type === "chat") {
+                setChatUpdate({ name: msg.name, text: msg.text });
             }
             //debugger;
         }
@@ -46,7 +48,7 @@ const Game = () => {
         }
     }, []);
 
-    /** Handler for submitting message to server.
+    /** Handler for SENDING MESSAGE to server.
      *  Provided as context via GameContext*/ 
     const handleMessage = (evt, type, payload) => {
         evt.preventDefault();
@@ -59,7 +61,10 @@ const Game = () => {
 
     return (
         <div className="Game">
-            <GameContext.Provider value={{ handleMessage, players }}>
+            <GameContext.Provider value={{
+                    handleMessage,
+                    players,
+                    chatUpdate }}>
                 <div className="GameDisplay">
                     {gameMode === "lobby" ? <Lobby />
                     : gameMode === "inGame" ? <InGame />

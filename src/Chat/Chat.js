@@ -15,7 +15,7 @@ const Chat = () => {
             <div className="PlayerGroup">
                 {players.map(({name}) => (
                     <Player
-                        username={name} />
+                        user={name} />
                 ))}
             </div>
             <MessageBox />
