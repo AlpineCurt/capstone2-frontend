@@ -4,10 +4,8 @@ import CurrUserContext from "./CurrUserContext";
 import Lobby from "./Lobby";
 import InGame from "./InGame";
 import Results from "./Results";
-import Chat from "./Chat/Chat.js";
+import Layout from "./Layout/Layout.js";
 import { useParams } from "react-router-dom";
-
-import "./Game.css";
 
 const Game = () => {
 
@@ -63,13 +61,14 @@ const Game = () => {
             <GameContext.Provider value={{
                     handleMessage,
                     players,
-                    chatUpdate }}>
-                <div className="GameDisplay">
+                    chatUpdate,
+                    gameMode }}>
+                {/* <div className="GameDisplay">
                     {gameMode === "lobby" ? <Lobby />
                     : gameMode === "inGame" ? <InGame />
                     : <Results />}
-                </div>
-                <Chat />
+                </div> */}
+                <Layout />
             </GameContext.Provider>
         </div>
     );

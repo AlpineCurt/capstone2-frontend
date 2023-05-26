@@ -1,8 +1,5 @@
 .MessageBox {
     max-height: 40px;
-    border: 2px;
-    border-style: solid;
-    margin: 10px;
 }
 
 .MessageBox-btn {

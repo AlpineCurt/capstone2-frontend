@@ -1,0 +1,72 @@
+:root {
+    --leftRightWidth: 20%;
+    --topBottomHeight: 23.5%;
+}
+
+.Layout {
+    position: absolute;
+    border: 2px;
+    border-style: solid;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(179, 250, 226);
+}
+
+.Layout-top {
+    border: 2px;
+    border-style: solid;
+    height: var(--topBottomHeight);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Layout-bottom {
+    border: 2px;
+    border-style: solid;
+    width: 100%;
+    height: var(--topBottomHeight);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Layout-mid {
+    display: flex;
+    flex-direction: row;
+    height: 47%;
+}
+
+.Layout-left {
+    border: 2px;
+    border-style: solid;
+    height: 100%;
+    width: var(--leftRightWidth);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Layout-GameView {
+    height: 100%;
+    border: 2px;
+    border-style: solid;
+    flex-grow: 2;
+}
+
+.Layout-right {
+    border: 2px;
+    border-style: solid;
+    height: 100%;
+    width: var(--leftRightWidth);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Layout-MessageBox {
+    height: 6%;
+    min-height: 50px;
+    max-height: 75px;
+}
