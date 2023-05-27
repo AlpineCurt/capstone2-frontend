@@ -12,36 +12,46 @@ const Game = () => {
     const { gameId } = useParams();
     const ws = useRef(null);
     const [ gameMode, setGameMode ] = useState("lobby");
-    const { currUser } = useContext(CurrUserContext);
-    const username = useRef(null);
+    const { currUser, setCurrUser } = useContext(CurrUserContext);
     const [ players, setPlayers ] = useState([]);
     const [ chatUpdate, setChatUpdate ] = useState({});
 
-    // Open and initialize websocket when first loaded
+    
     useEffect(() => {
-        username.current = currUser;
+        if (!currUser) setCurrUser(localStorage.username);
 
-        ws.current = new WebSocket(`ws://localhost:3001/games/${gameId}`);
+        // If Game already exists, get current state
         
+        // Open and initialize websocket when first loaded
+        ws.current = new WebSocket(`ws://localhost:3001/games/${gameId}`);
         ws.current.onopen = (evt) => {
-            const data = {type: "selfjoin", data: username.current};
-            ws.current.send(JSON.stringify(data));
+            if (localStorage.username) {
+                const data = {type: "selfjoin", data: localStorage.username};
+                ws.current.send(JSON.stringify(data));
+            } else {
+                const data = {type: "stateReq"}
+                ws.current.send(JSON.stringify(data));
+            }
+            
         }
 
         // Handler for RECEIVING MESSAGE from server
         ws.current.onmessage = (evt) => {
             const msg = JSON.parse(evt.data);
-
             if (msg.type === "playerUpdate") {
                 setPlayers(msg.players);
             } else if (msg.type === "chat") {
                 setChatUpdate({ name: msg.name, text: msg.text });
+            } else if (msg.type === "stateReq") {
+                setPlayers(msg.players);
             }
         }
 
         ws.current.onclose = (evt) => {
-            const data = {type: "selfleave", data: username.current};
-            ws.current.send(JSON.stringify(data));
+            if (currUser) {
+                const data = {type: "selfleave", data: currUser};
+                ws.current.send(JSON.stringify(data));
+            }
         }
     }, []);
 

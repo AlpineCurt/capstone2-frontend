@@ -1,8 +1,27 @@
-.Player-Card{
-    max-height: 225px;
-    max-width: 250px;
-    border: 2px;
-    border-style: solid;
+:root {
+    --testBorder: 2px;
+    --testBorder-style: solid;
+}
+
+.Player-Card {
+
+    min-width: 200px;
+    max-width: 200px;
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
     padding: 5px;
     margin: 5px;
+}
+
+.Player-Card-topBottom {
+    max-height: 100%;
+}
+
+.Player-Card-leftRight {
+    max-height: 45%;
+}
+
+.Player-Card-status {
+    margin: 5px;
+    height: 21px;
 }

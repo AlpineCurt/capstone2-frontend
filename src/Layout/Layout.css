@@ -1,20 +1,28 @@
 :root {
     --leftRightWidth: 20%;
+    
     --topBottomHeight: 23.5%;
+    --midHeight: 42.5%;
+    --bottomHeight: 28%;
+    --messageHeight: 6%;
+
+    /* --testBorder: 2px;
+    --testBorder-style: solid; */
 }
 
 .Layout {
     position: absolute;
-    border: 2px;
-    border-style: solid;
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
     width: 100%;
     height: 100%;
     background-color: rgb(179, 250, 226);
+    text-align: center;
 }
 
 .Layout-top {
-    border: 2px;
-    border-style: solid;
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
     height: var(--topBottomHeight);
     width: 100%;
     display: flex;
@@ -23,10 +31,10 @@
 }
 
 .Layout-bottom {
-    border: 2px;
-    border-style: solid;
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
     width: 100%;
-    height: var(--topBottomHeight);
+    height: var(--bottomHeight);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -35,38 +43,43 @@
 .Layout-mid {
     display: flex;
     flex-direction: row;
-    height: 47%;
+    height: var(--midHeight);
 }
 
 .Layout-left {
-    border: 2px;
-    border-style: solid;
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
     height: 100%;
     width: var(--leftRightWidth);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
 }
 
 .Layout-GameView {
     height: 100%;
-    border: 2px;
-    border-style: solid;
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
     flex-grow: 2;
 }
 
 .Layout-right {
-    border: 2px;
-    border-style: solid;
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
     height: 100%;
     width: var(--leftRightWidth);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .Layout-MessageBox {
-    height: 6%;
+    height: var(--messageHeight);
     min-height: 50px;
     max-height: 75px;
 }

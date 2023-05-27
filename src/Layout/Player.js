@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useContext, useState } from "react";
 import Avatar from "./Avatar";
 import SpeechBubble from "./SpeechBubble";
-import { Card, CardTitle } from "reactstrap";
+import { Card, CardTitle, CardText } from "reactstrap";
 import "./Player.css";
 import GameContext from "../GameContext";
 
-const Player = ({user}) => {
+const Player = ({user, location}) => {
 
     const { chatUpdate } = useContext(GameContext);
     const username = useRef(user);
@@ -31,18 +31,24 @@ const Player = ({user}) => {
         setTimeout(() => {
             setSpchBubTxt("");
             showBubble();
-        }, 6000);
+        }, 5000);
     }
 
+    const classNameString = `Player-Card ${location}`;
+
     return (
-        <Card className="Player-Card">
-            {spchBubTxt ? <SpeechBubble text={spchBubTxt}/> : null}
-            <Avatar />
-            <CardTitle>
-                {user}
+        <Card className={classNameString}>
+            <CardText className="Player-Card-status">
+                Status here!
+            </CardText>
+            <CardTitle className="Player-Card-username">
+                {username.current}
             </CardTitle>
+            <Avatar />
+            {spchBubTxt ? <SpeechBubble pointing="top" text={spchBubTxt}/> : null}
+            {/* <SpeechBubble pointing="top" text={"We need a test sentence here i kan spel gud!"}/> */}
         </Card>
-    );
+    );    
 }
 
 export default Player;

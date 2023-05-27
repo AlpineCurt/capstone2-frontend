@@ -3,7 +3,7 @@ import "./Avatar.css";
 
 const Avatar = () => {
     return (
-        <div className="Avater">
+        <div className="Avatar">
             <img className="Avatar-pic" src="/temp_pics/kaya.jpg"/>
         </div>
     );

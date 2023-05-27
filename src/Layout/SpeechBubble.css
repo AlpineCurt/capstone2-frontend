@@ -1,5 +1,5 @@
 .speech {
-    font-size:  max(min(2vw, 16px), 11px);
+    font-size:  max(min(2vw, 16px), 9px);
     color: black;
     background: white;
     position: relative;
@@ -21,5 +21,16 @@
     border-bottom: 0;
     bottom: -20px; left: 50%;
     margin-left: -20px;
+}
+
+.top.speech::after {
+    border-bottom-color: white;
+    border-top: 0;
+    top: -20px; left: 50%;
+    margin-left: -20px;
+}
+
+.top {
+    margin-top: 20px;
 }
 

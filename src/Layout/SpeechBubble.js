@@ -1,12 +1,13 @@
 import React from "react";
 import "./SpeechBubble.css";
 
-const SpeechBubble = ({text}) => {
+const SpeechBubble = ({text, pointing}) => {
+
+    const point = pointing === "top" ? "SpeechBubble speech top" : "SpeechBubble speech bottom";
+
     return (
-        <div className="SpeechBubble">
-            <div className="speech bottom">
-                {text}
-            </div>
+        <div className={point}>
+            {text}
         </div>
     );
 }
