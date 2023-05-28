@@ -30,28 +30,12 @@ const Home = () => {
             ...data,
             [name]: value
         }));
-        // if (e.target.type === "checkbox") {
-        //     setFormData(data => ({
-        //         ...data,
-        //         [name]: e.target.checked
-        //     }));
-        // } else {
-        //     setFormData(data => ({
-        //         ...data,
-        //         [name]: value
-        //     }));
-        // }
     }
 
     const handleJoinGame = async (e) => {
-        // if (formData.remember) {
-            
-        // } else {
-        //     localStorage.removeItem("username");
-        // }
         
         localStorage.setItem("username", formData.username);
-        setCurrUser(formData.username);
+        setCurrUser(() => formData.username);
         
         try {
             const res = await TriviaApi.checkGameId(formData.gameId.toLocaleLowerCase());
@@ -67,14 +51,9 @@ const Home = () => {
     }
 
     const handleNewGame = async (e) => {
-        
-        // if (formData.remember) {
-        //     localStorage.setItem("username", formData.username);
-        // } else {
-        //     localStorage.removeItem("username");
-        // }
+
         localStorage.setItem("username", formData.username);
-        setCurrUser(formData.username);
+        setCurrUser(() => formData.username);
 
         try {
             const res = await TriviaApi.newGameId();
@@ -96,13 +75,6 @@ const Home = () => {
                     onChange={handleChange}
                     placeholder={localStorage.username}
                 />
-                {/* <label htmlFor="remember">Remeber Me</label>
-                <input
-                    type="checkbox"
-                    name="remember"
-                    onChange={handleChange}
-                    checked={formData.remember}
-                /> */}
             </dir>
             <dir>
                 <label htmlFor="gameId">Game ID</label>

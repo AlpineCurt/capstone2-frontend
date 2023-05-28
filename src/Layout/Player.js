@@ -7,7 +7,7 @@ import GameContext from "../GameContext";
 
 const Player = ({user, location}) => {
 
-    const { chatUpdate } = useContext(GameContext);
+    const { chatUpdate, chatMsg } = useContext(GameContext);
     const username = useRef(user);
     const chatQueue = useRef([]);
     const [spchBubTxt, setSpchBubTxt] = useState("");
@@ -18,16 +18,22 @@ const Player = ({user, location}) => {
 
     /** "chat" ws message type received by Game Component. */ 
     useEffect(() => {
-        if (chatUpdate.name === username.current) {
-            chatQueue.current.push(chatUpdate);
+        // if (chatUpdate.name === username.current) {
+        //     chatQueue.current.push(chatUpdate);
+        // }
+        //debugger;
+        if (chatMsg.current.name === username.current) {
+            chatQueue.current.push(chatMsg.current);
+            chatMsg.current = {name: "", text: ""};
         }
         if (spchBubTxt === "") showBubble();
+        
     }, [chatUpdate]);
 
     function showBubble() {
         if (!chatQueue.current.length) return;
         let msg = chatQueue.current.shift();
-        setSpchBubTxt(msg.text);
+        setSpchBubTxt(() => msg.text);
         setTimeout(() => {
             setSpchBubTxt("");
             showBubble();

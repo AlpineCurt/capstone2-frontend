@@ -1,9 +1,6 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
 import GameContext from "./GameContext";
 import CurrUserContext from "./CurrUserContext";
-import Lobby from "./Lobby";
-import InGame from "./InGame";
-import Results from "./Results";
 import Layout from "./Layout/Layout.js";
 import { useParams } from "react-router-dom";
 
@@ -15,10 +12,30 @@ const Game = () => {
     const { currUser, setCurrUser } = useContext(CurrUserContext);
     const [ players, setPlayers ] = useState([]);
     const [ chatUpdate, setChatUpdate ] = useState({});
+    const chatMsg = useRef({name: "", text: ""});
+    const [ isHost, setIsHost] = useState(false);
 
     
+    function handlePlayerUpdate(players) {
+        //debugger;
+        setPlayers(() => [...players]);
+        console.log("handlePlayerUpdateCalled");
+
+        // Check if this user is the host
+        players.forEach((player) => {
+            if (player.name === currUser && player.isHost) {
+                setIsHost(() => true);
+            }
+        });
+    }
+
+    function handleChatUpdate(msg) {
+        setChatUpdate((bool) => !bool);
+        chatMsg.current = msg;
+    }
+
     useEffect(() => {
-        if (!currUser) setCurrUser(localStorage.username);
+        if (!currUser) setCurrUser(() => localStorage.username);
 
         // If Game already exists, get current state
         
@@ -39,11 +56,11 @@ const Game = () => {
         ws.current.onmessage = (evt) => {
             const msg = JSON.parse(evt.data);
             if (msg.type === "playerUpdate") {
-                setPlayers(msg.players);
+                handlePlayerUpdate(msg.players);
             } else if (msg.type === "chat") {
-                setChatUpdate({ name: msg.name, text: msg.text });
+                handleChatUpdate(msg);
             } else if (msg.type === "stateReq") {
-                setPlayers(msg.players);
+                handlePlayerUpdate(msg.players);
             }
         }
 
@@ -72,7 +89,10 @@ const Game = () => {
                     handleMessage,
                     players,
                     chatUpdate,
-                    gameMode }}>
+                    setChatUpdate,
+                    gameMode,
+                    setGameMode,
+                    chatMsg }}>
                 {/* <div className="GameDisplay">
                     {gameMode === "lobby" ? <Lobby />
                     : gameMode === "inGame" ? <InGame />
