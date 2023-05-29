@@ -15,11 +15,23 @@ const Game = () => {
     const chatMsg = useRef({name: "", text: ""});
     const [ isHost, setIsHost] = useState(false);
 
-    
+    /** Primary handler for message from server */
+    function handleGameUpdate(msg) {
+        if (msg.type === "chat") {
+            handleChatUpdate(msg);
+        }
+        else if (msg.type === "playerUpdate" || msg.type === "stateReq") {
+            handlePlayerUpdate(msg.players);
+        }
+    }
+
     function handlePlayerUpdate(players) {
-        //debugger;
-        setPlayers(() => [...players]);
-        console.log("handlePlayerUpdateCalled");
+        players.forEach((player) => {
+            if (player.isHost) {
+                player.status = "Host"
+            }
+        });
+        setPlayers([...players]);
 
         // Check if this user is the host
         players.forEach((player) => {
@@ -30,8 +42,7 @@ const Game = () => {
     }
 
     function handleChatUpdate(msg) {
-        setChatUpdate((bool) => !bool);
-        chatMsg.current = msg;
+        setChatUpdate(() => msg);
     }
 
     useEffect(() => {
@@ -49,19 +60,12 @@ const Game = () => {
                 const data = {type: "stateReq"}
                 ws.current.send(JSON.stringify(data));
             }
-            
         }
 
         // Handler for RECEIVING MESSAGE from server
         ws.current.onmessage = (evt) => {
             const msg = JSON.parse(evt.data);
-            if (msg.type === "playerUpdate") {
-                handlePlayerUpdate(msg.players);
-            } else if (msg.type === "chat") {
-                handleChatUpdate(msg);
-            } else if (msg.type === "stateReq") {
-                handlePlayerUpdate(msg.players);
-            }
+            handleGameUpdate(msg);
         }
 
         ws.current.onclose = (evt) => {
@@ -86,19 +90,15 @@ const Game = () => {
     return (
         <div className="Game">
             <GameContext.Provider value={{
-                    handleMessage,
-                    players,
-                    chatUpdate,
-                    setChatUpdate,
-                    gameMode,
-                    setGameMode,
-                    chatMsg }}>
-                {/* <div className="GameDisplay">
-                    {gameMode === "lobby" ? <Lobby />
-                    : gameMode === "inGame" ? <InGame />
-                    : <Results />}
-                </div> */}
-                <Layout />
+                    handleMessage,  // used by MessageBox
+                    chatUpdate, // used by Player
+                    gameMode,  // used by Layout
+                    chatMsg  // used by Player
+                    }}>
+                <Layout
+                    players={players}
+                    gameMode={gameMode}
+                />
             </GameContext.Provider>
         </div>
     );
