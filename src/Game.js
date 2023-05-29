@@ -11,8 +11,8 @@ const Game = () => {
     const [ gameMode, setGameMode ] = useState("lobby");
     const { currUser, setCurrUser } = useContext(CurrUserContext);
     const [ players, setPlayers ] = useState([]);
-    const [ chatUpdate, setChatUpdate ] = useState({});
-    const chatMsg = useRef({name: "", text: ""});
+    const [ chatUpdate, setChatUpdate ] = useState(false);
+    const chatMsg = useRef({name: null, text: null});
     const [ isHost, setIsHost] = useState(false);
 
     /** Primary handler for message from server */
@@ -42,7 +42,9 @@ const Game = () => {
     }
 
     function handleChatUpdate(msg) {
-        setChatUpdate(() => msg);
+        chatMsg.current = msg;
+        setChatUpdate((chat) => !chat);
+        
     }
 
     useEffect(() => {

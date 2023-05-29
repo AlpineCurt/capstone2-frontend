@@ -11,6 +11,7 @@ import "./Layout.css";
 const Layout = ({players, gameMode}) => {
 
     function distributePlayers (players_dist, loc) {
+        //debugger;
         /** Takes array of "players" prop, location we want them to 
          * appear in "loc", and returns array of Player components.
          * Assigns className to the component for styling.
@@ -74,8 +75,8 @@ const Layout = ({players, gameMode}) => {
             <div className="Layout-bottom">
                 {distributePlayers(players, "bottom")}
                 {/* <Player location="Player-Card-topBottom" user={"TwoFace"}/>
-                <Player location="Player-Card-topBottom" user={"TwoFace"}/>
                 <Player location="Player-Card-topBottom" user={"TwoFace"}/> */}
+                
             </div>
             <div className="Layout-MessageBox">
                 <MessageBox />

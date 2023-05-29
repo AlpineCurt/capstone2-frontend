@@ -11,47 +11,32 @@ const Player = ({user, location, status=""}) => {
     const username = useRef(user);
     const chatQueue = useRef([]);
     const [ spchBubTxt, setSpchBubTxt ] = useState(null);
-    const chatRunning = useRef(false);
     //const spchBubTxt = useRef(null);
 
     useEffect(() => {
         username.current = user
     }, []);
 
-    /** "chat" ws message type received by Game Component. */ 
+    /** "chat" ws message type received by Game Component.
+     * This is unnecessarily convoluted because it contains
+     * the remnants of a currently abandoned feature.*/ 
     useEffect(() => {
-        console.log(chatUpdate);
-        //debugger;
-        if (chatUpdate.name === username.current) {
-            chatQueue.current.push(chatUpdate.text);
+        if (chatMsg.current.name === username.current) {
+            chatQueue.current.push(chatMsg.current);
+            chatMsg.current = {name: null, text: null};
         }
-
-        // if (chatMsg.current.name === username.current) {
-        //     chatQueue.current.push(chatMsg.current);
-        //     chatMsg.current = {name: "", text: ""};
-        // }
-        //if (chatQueue.current.length === 1) showBubble();
-        // if (!spchBubTxt.current) showBubble();
-        //debugger;
-        if (!chatRunning.current) showBubble();
+        if (chatQueue.current.length) showBubble();
         
     }, [chatUpdate]);
 
     function showBubble() {
-        chatRunning.current = true;
-        //debugger;
-        if (!chatQueue.current.length) {
-            chatRunning.current = false;
-            return
-        };
+        if (!chatQueue.current.length) return;
         let msg = chatQueue.current.shift();
-        setSpchBubTxt(() => msg);
-        //spchBubTxt.current = msg;
+        setSpchBubTxt(() => msg.text);
         setTimeout(() => {
             setSpchBubTxt(() => null);
-            //spchBubTxt.current = null;
             showBubble();
-        }, 7000);
+        }, 4000);
     }
 
     const classNameString = `Player-Card ${location}`;
