@@ -1,5 +1,18 @@
 .MessageBox {
-    max-height: 40px;
+    margin: auto;
+    width: var(--midWidth);
+    height: 20vw;
+
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
+    
+    position: fixed;
+    bottom: 0;
+    left: var(--leftRightWidth);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .MessageBox-btn {
@@ -7,5 +20,31 @@
 }
 
 .MessageBox-chatMsg {
-    width: min(max(200px, 50%))
+    /* width: min(max(200px, 50%)) */
+    width: 80%;
+}
+
+.MessageBox-messages {
+    height: 100%;
+    width: 90%;
+    overflow: scroll;
+    text-align: left;
+
+    border: 1px;
+    border-style: var(--testBorder-style);
+
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.MessageBox-messages-list {
+    height: 100%;
+    list-style-type: none;
+}
+
+.MessageBox-form {
+    /* margin: auto; */
+    /* position: absolute;
+    bottom: 5px; */
+    width: 80%;
 }

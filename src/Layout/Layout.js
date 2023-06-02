@@ -18,19 +18,19 @@ const Layout = ({players, gameMode}) => {
          */
         const location = {
             top: {
-                indeces: new Set([0, 4, 9]),
+                indeces: new Set([0, 3, 6]),
                 className: "topBottom"
             },
             bottom: {
-                indeces: new Set([1, 5, 8]),
+                indeces: new Set([]),
                 className: "topBottom"
             },
             left: {
-                indeces: new Set([3, 7]),
+                indeces: new Set([2, 5, 7]),
                 className: "leftRight"
             },
             right: {
-                indeces: new Set([2, 6]),
+                indeces: new Set([1, 4, 8]),
                 className: "leftRight"
             },
         }
@@ -50,36 +50,27 @@ const Layout = ({players, gameMode}) => {
 
     return (
         <div className="Layout">
-            <div className="Layout-top">
-                {distributePlayers(players, "top")}
-                {/* <Player spchBub="top" location="Player-Card-topBottom" user={"HappyFace"}/>
-                <Player spchBub="top" location="Player-Card-topBottom" user={"HappyFace"}/> */}
+            <div className="Layout-left">
+                {distributePlayers(players, "left")}
+                {/* <Player location="Player-Card-leftRight" user={"SadFace"}/>
+                    <Player location="Player-Card-leftRight" user={"SadFace"}/> */}
             </div>
             <div className="Layout-mid">
-                <div className="Layout-left">
-                    {distributePlayers(players, "left")}
-                    {/* <Player location="Player-Card-leftRight" user={"SadFace"}/>
-                    <Player location="Player-Card-leftRight" user={"SadFace"}/> */}
+                <div className="Layout-mid-top">
+                    {distributePlayers(players, "top")}
+                    {/* <Player spchBub="top" location="Player-Card-topBottom" user={"HappyFace"}/>
+                <Player spchBub="top" location="Player-Card-topBottom" user={"HappyFace"}/> */}
                 </div>
-                <div className="Layout-GameView">
+                <div className="Layout-mid-center">
                     {gameMode === "lobby" ? <Lobby />
                     : gameMode === "inGame" ? <InGame />
                     : <Results />}
                 </div>
-                <div className="Layout-right">
-                    {distributePlayers(players, "right")}
-                    {/* <Player location="Player-Card-leftRight" user={"CrazyFace"}/>
+            </div>
+            <div className="Layout-right">
+                {distributePlayers(players, "right")}
+                {/* <Player location="Player-Card-leftRight" user={"CrazyFace"}/>
                     <Player location="Player-Card-leftRight" user={"CrazyFace"}/> */}
-                </div>
-            </div>
-            <div className="Layout-bottom">
-                {distributePlayers(players, "bottom")}
-                {/* <Player location="Player-Card-topBottom" user={"TwoFace"}/>
-                <Player location="Player-Card-topBottom" user={"TwoFace"}/> */}
-                
-            </div>
-            <div className="Layout-MessageBox">
-                <MessageBox />
             </div>
         </div>
     );

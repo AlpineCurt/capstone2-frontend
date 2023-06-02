@@ -19,6 +19,7 @@
 
 .Player-Card-leftRight {
     max-height: 45%;
+    min-height: 240px;
 }
 
 .Player-Card-status {

@@ -1,85 +1,64 @@
 :root {
     --leftRightWidth: 20%;
     
-    --topBottomHeight: 23.5%;
-    --midHeight: 42.5%;
-    --bottomHeight: 28%;
+    --topHeight: 40%;
+    --midHeight: 60%;
+    --bottomHeight: 20%;
     --messageHeight: 6%;
+    --midWidth: 60%;
+    --leftRightHeight: 110%;
 
-    /* --testBorder: 2px;
-    --testBorder-style: solid; */
+    --testBorder: 2px;
+    --testBorder-style: solid;
 }
 
 .Layout {
-    position: absolute;
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
-    width: 100%;
-    height: 100%;
-    background-color: rgb(179, 250, 226);
-    text-align: center;
-}
-
-.Layout-top {
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
-    height: var(--topBottomHeight);
-    width: 100%;
+    height: 90%;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-}
-
-.Layout-bottom {
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
-    width: 100%;
-    height: var(--bottomHeight);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.Layout-mid {
-    display: flex;
-    flex-direction: row;
-    height: var(--midHeight);
 }
 
 .Layout-left {
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
-    height: 100%;
     width: var(--leftRightWidth);
+    height: var(--leftRightHeight);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    position: absolute;
-    top: 0;
-}
-
-.Layout-GameView {
-    height: 100%;
+    justify-content: center;
+    
     border: var(--testBorder);
     border-style: var(--testBorder-style);
-    flex-grow: 2;
 }
 
 .Layout-right {
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
-    height: 100%;
     width: var(--leftRightWidth);
+    height: var(--leftRightHeight);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    position: absolute;
-    top: 0;
-    right: 0;
+    justify-content: center;
+
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
 }
 
-.Layout-MessageBox {
-    height: var(--messageHeight);
-    min-height: 50px;
-    max-height: 75px;
+.Layout-mid {
+    width: var(--midWidth);
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
+}
+
+.Layout-mid-top {
+    display: flex;
+    justify-content: center;
+    height: var(--topHeight);
+}
+
+.Layout-mid-center {
+    height: var(--midHeight);
+
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
 }

@@ -3,6 +3,8 @@ import GameContext from "./GameContext";
 import CurrUserContext from "./CurrUserContext";
 import Layout from "./Layout/Layout.js";
 import { useParams } from "react-router-dom";
+import MessageBox from "./Layout/MessageBox";
+import "./Game.css";
 
 const Game = () => {
 
@@ -14,6 +16,7 @@ const Game = () => {
     const [ chatUpdate, setChatUpdate ] = useState(false);
     const chatMsg = useRef({name: null, text: null});
     const [ isHost, setIsHost] = useState(false);
+    const [ chatMessages, setChatMessages ] = useState([]);
 
     /** Primary handler for message from server */
     function handleGameUpdate(msg) {
@@ -44,6 +47,7 @@ const Game = () => {
     function handleChatUpdate(msg) {
         chatMsg.current = msg;
         setChatUpdate((chat) => !chat);
+        setChatMessages((oldMess) => [...oldMess, msg])
         
     }
 
@@ -92,15 +96,17 @@ const Game = () => {
     return (
         <div className="Game">
             <GameContext.Provider value={{
-                    handleMessage,  // used by MessageBox
-                    chatUpdate, // used by Player
-                    gameMode,  // used by Layout
-                    chatMsg  // used by Player
-                    }}>
+                handleMessage,  // used by MessageBox
+                chatUpdate, // used by Player
+                gameMode,  // used by Layout
+                chatMsg,  // used by Player
+                chatMessages  // used by MessageBox
+                }}>
                 <Layout
                     players={players}
                     gameMode={gameMode}
                 />
+                <MessageBox messages={chatMessages}/>
             </GameContext.Provider>
         </div>
     );
