@@ -17,27 +17,33 @@ const Game = () => {
     const chatMsg = useRef({name: null, text: null});
     const [ isHost, setIsHost] = useState(false);
     const [ chatMessages, setChatMessages ] = useState([]);
+    const [ gameState, setGameState ] = useState({
+        phase: "lobby",
+        choosingCategories: false,
+    });
 
     /** Primary handler for message from server */
     function handleGameUpdate(msg) {
         if (msg.type === "chat") {
             handleChatUpdate(msg);
-        }
-        else if (msg.type === "playerUpdate" || msg.type === "stateReq") {
-            handlePlayerUpdate(msg.players);
+        } else if (msg.type === "gameStateUpdate") {
+            handleGameStateUpdate(msg);
         }
     }
 
-    function handlePlayerUpdate(players) {
-        players.forEach((player) => {
-            if (player.isHost) {
-                player.status = "Host"
-            }
-        });
-        setPlayers([...players]);
+    function handleGameStateUpdate(msg) {
+        setGameState(() => ({...msg.state}));
+        if (msg.state.phase === "lobby") {
+            msg.players.forEach((player) => {
+                if (player.isHost) {
+                    player.status = "Host"
+                }
+            });
+        }
+        setPlayers([...msg.players]);
 
         // Check if this user is the host
-        players.forEach((player) => {
+        msg.players.forEach((player) => {
             if (player.name === currUser && player.isHost) {
                 setIsHost(() => true);
             }
@@ -53,12 +59,16 @@ const Game = () => {
 
     useEffect(() => {
         if (!currUser) setCurrUser(() => localStorage.username);
-
-        // If Game already exists, get current state
         
         // Open and initialize websocket when first loaded
-        ws.current = new WebSocket(`ws://localhost:3001/games/${gameId}`);
+        if (localStorage.username) {
+            ws.current = new WebSocket(`ws://localhost:3001/games/${gameId}?username=${localStorage.username}`);
+        } else {
+            ws.current = new WebSocket(`ws://localhost:3001/games/${gameId}`);
+        }
+        
         ws.current.onopen = (evt) => {
+            // Get current state of Game
             if (localStorage.username) {
                 const data = {type: "selfjoin", data: localStorage.username};
                 ws.current.send(JSON.stringify(data));
@@ -96,15 +106,16 @@ const Game = () => {
     return (
         <div className="Game">
             <GameContext.Provider value={{
-                handleMessage,  // used by MessageBox
+                handleMessage,  // used by MessageBox, Layout, InGame
                 chatUpdate, // used by Player
-                gameMode,  // used by Layout
+                //gameMode,  // used by Layout
                 chatMsg,  // used by Player
-                chatMessages  // used by MessageBox
+                gameState,
+                isHost // used by Lobby
                 }}>
                 <Layout
                     players={players}
-                    gameMode={gameMode}
+                    gameMode={gameState.phase}
                 />
                 <MessageBox messages={chatMessages}/>
             </GameContext.Provider>

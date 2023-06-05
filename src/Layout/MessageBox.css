@@ -1,10 +1,10 @@
 .MessageBox {
+    --testBorder: 1px;
+    --testBorder-style: solid;
+
     margin: auto;
     width: var(--midWidth);
     height: 20vw;
-
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
     
     position: fixed;
     bottom: 0;
@@ -20,7 +20,6 @@
 }
 
 .MessageBox-chatMsg {
-    /* width: min(max(200px, 50%)) */
     width: 80%;
 }
 
@@ -31,7 +30,7 @@
     text-align: left;
 
     border: 1px;
-    border-style: var(--testBorder-style);
+    border-style: solid;
 
     display: flex;
     flex-direction: column-reverse;
@@ -43,8 +42,5 @@
 }
 
 .MessageBox-form {
-    /* margin: auto; */
-    /* position: absolute;
-    bottom: 5px; */
     width: 80%;
 }

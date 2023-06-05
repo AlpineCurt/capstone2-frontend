@@ -1,0 +1,51 @@
+.InGame {
+    --testBorder: 2px;
+    --testBorder-style: solid;
+    
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.InGame-left {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+
+
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
+}
+
+.InGame-right {
+    height: 100%;
+    width: 40%;
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.InGame-timer {
+    height: 20%;
+    width: 100%;
+
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
+}
+
+.InGame-question {
+    height: 80%;
+    width: 100%;
+    font-size: 3.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    border: var(--testBorder);
+    border-style: var(--testBorder-style);
+}

@@ -1,14 +1,14 @@
-:root {
-    --testBorder: 2px;
-    --testBorder-style: solid;
-}
+/* :root {
+    --testBorderPlayer: 2px;
+    --testBorderPlayer-style: solid;
+} */
 
 .Player-Card {
 
     min-width: 200px;
     max-width: 200px;
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    border: var(--testBorderPlayer);
+    border-style: var(--testBorderPlayer-style);
     padding: 5px;
     margin: 5px;
 }

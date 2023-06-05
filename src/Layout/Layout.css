@@ -1,6 +1,15 @@
 :root {
     --leftRightWidth: 20%;
-    
+    --topHeight: 40%;
+    --midHeight: 60%;
+    --bottomHeight: 20%;
+    --messageHeight: 6%;
+    --midWidth: 60%;
+    --leftRightHeight: 110%;
+}
+
+.Layout {
+    --leftRightWidth: 20%;
     --topHeight: 40%;
     --midHeight: 60%;
     --bottomHeight: 20%;
@@ -8,11 +17,7 @@
     --midWidth: 60%;
     --leftRightHeight: 110%;
 
-    --testBorder: 2px;
-    --testBorder-style: solid;
-}
 
-.Layout {
     height: 90%;
     display: flex;
     justify-content: center;

@@ -2,8 +2,8 @@ import React from "react";
 import Player from "./Player";
 import MessageBox from "./MessageBox";
 import { v4 as uuid } from 'uuid';
-import Lobby from "../Lobby.js";
-import InGame from "../InGame.js";
+import Lobby from "../Lobby/Lobby.js";
+import InGame from "../InGame/InGame.js";
 import Results from "../Results.js";
 
 import "./Layout.css";
@@ -11,7 +11,6 @@ import "./Layout.css";
 const Layout = ({players, gameMode}) => {
 
     function distributePlayers (players_dist, loc) {
-        //debugger;
         /** Takes array of "players" prop, location we want them to 
          * appear in "loc", and returns array of Player components.
          * Assigns className to the component for styling.
@@ -42,6 +41,7 @@ const Layout = ({players, gameMode}) => {
                     location={`Player-Card-${location[loc].className}`}
                     key={uuid()}
                     status={player.status}
+                    score={player.score}
                 />);
             }
         });
