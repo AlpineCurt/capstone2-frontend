@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import GameContext from "../GameContext";
 import AnswerBtn from "./AnswerBtn";
 import { v4 as uuid } from 'uuid';
@@ -10,17 +10,57 @@ const InGame = () => {
 
     const { gameState, handleMessage, isHost } = useContext(GameContext);
     const [ansDis, setAnsDis] = useState(false);
+    const timerId = useRef();
+    const [ timeRemaining, setTimeRemaining ] = useState(gameState.timeRemaining);
+    const [ showAnswers, setShowAnswers ] = useState(false);
+    const roundStarted = useRef(false);
+
+    const handleAnswer = (ans) => {
+        handleMessage("answer", ans);
+        setAnsDis(() => true);
+        resetTimer();
+    }
 
     const handleSubmit = (e, ans) => {
         e.preventDefault();
-        handleMessage(e, "answer", ans);
-        setAnsDis(true);
+        handleAnswer(ans);
     }
 
-    const handleNext = (e) => {
-        e.preventDefault();
-        handleMessage(e, "nextQuestion");
+    const handleNext = () => {
+        handleMessage("nextQuestion");
     }
+
+    const resetTimer = () => {
+        clearInterval(timerId.current);
+        setTimeRemaining(() => gameState.timerLangth);
+    }
+
+    useEffect(() => {
+        if (!gameState.roundFinished && !roundStarted.current) {
+            // Question begins
+            setTimeRemaining(() => gameState.timeRemaining);
+            roundStarted.current = true;
+            timerId.current = setInterval(() => {
+                setTimeRemaining(t => t - 1);
+            }, 1000);
+        } else if (gameState.roundFinished) {
+            // Server has ended round, likely all players have answered/timed out
+            roundStarted.current = false;
+            resetTimer();
+            if (isHost) setTimeout(() => handleNext(), 5000);
+        }
+
+        if (gameState.newQuestion) {
+
+            setAnsDis(false);
+        }
+    }, [gameState]);
+
+    useEffect(() => {
+        if (timeRemaining < 1) {
+            handleAnswer("");
+        }
+    }, [timeRemaining]);
     
     return (
         <div className="InGame">
@@ -31,14 +71,14 @@ const InGame = () => {
                     <button onClick={handleNext}>Next</button> : null}
                 </div>
                 <div className="InGame-timer">
-                    45
+                    {timeRemaining}
                 </div>
             </div>
             <div className="InGame-right">
                 {gameState.answers.map((answer) => (
                     <AnswerBtn
                         text={answer}
-                        //disabled={ansDis}
+                        disabled={ansDis}
                         handleSubmit={handleSubmit}
                         key={uuid()}
                     />

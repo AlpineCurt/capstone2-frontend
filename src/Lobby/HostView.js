@@ -8,7 +8,7 @@ const HostView = () => {
 
     const handleBeginGame = (e) => {
         e.preventDefault();
-        handleMessage(e, "begingame");
+        handleMessage("begingame");
     }
 
     return (

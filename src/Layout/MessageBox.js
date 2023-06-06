@@ -17,7 +17,7 @@ const MessageBox = ({messages=[]}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleMessage(e, "chat", formData);
+        handleMessage("chat", formData);
         e.target.reset();
     }
 

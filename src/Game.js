@@ -10,7 +10,6 @@ const Game = () => {
 
     const { gameId } = useParams();
     const ws = useRef(null);
-    const [ gameMode, setGameMode ] = useState("lobby");
     const { currUser, setCurrUser } = useContext(CurrUserContext);
     const [ players, setPlayers ] = useState([]);
     const [ chatUpdate, setChatUpdate ] = useState(false);
@@ -19,8 +18,9 @@ const Game = () => {
     const [ chatMessages, setChatMessages ] = useState([]);
     const [ gameState, setGameState ] = useState({
         phase: "lobby",
-        choosingCategories: false,
+        choosingCategories: false
     });
+    const [ newQ, setNewQ ] = useState(true);
 
     /** Primary handler for message from server */
     function handleGameUpdate(msg) {
@@ -94,8 +94,7 @@ const Game = () => {
 
     /** Handler for SENDING MESSAGE to server.
      *  Provided as context via GameContext*/ 
-    const handleMessage = (evt, type, payload) => {
-        evt.preventDefault();
+    const handleMessage = (type, payload) => {
         const data = {
             type: type,
             data: payload
@@ -106,12 +105,12 @@ const Game = () => {
     return (
         <div className="Game">
             <GameContext.Provider value={{
-                handleMessage,  // used by MessageBox, Layout, InGame
+                handleMessage,  // used by MessageBox InGame
                 chatUpdate, // used by Player
-                //gameMode,  // used by Layout
                 chatMsg,  // used by Player
-                gameState,
-                isHost // used by Lobby
+                gameState, // used by multiple
+                isHost, // used by Lobby
+                newQ // used by InGame
                 }}>
                 <Layout
                     players={players}
