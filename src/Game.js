@@ -20,7 +20,7 @@ const Game = () => {
         phase: "lobby",
         choosingCategories: false
     });
-    const [ newQ, setNewQ ] = useState(true);
+    //const [ newQ, setNewQ ] = useState(true);
 
     /** Primary handler for message from server */
     function handleGameUpdate(msg) {
@@ -110,7 +110,7 @@ const Game = () => {
                 chatMsg,  // used by Player
                 gameState, // used by multiple
                 isHost, // used by Lobby
-                newQ // used by InGame
+                //newQ // used by InGame
                 }}>
                 <Layout
                     players={players}

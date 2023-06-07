@@ -23,10 +23,10 @@
     width: 40%;
     border: var(--testBorder);
     border-style: var(--testBorder-style);
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .InGame-timer {
