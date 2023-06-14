@@ -18,19 +18,17 @@ const InGame = () => {
     const [ showTimer, setShowTimer ] = useState(false);
     const roundStarted = useRef(false);
     const [ answers, setAnswers ] = useState([]);
-    //const [ correctAnswer, setCorrectAnswer ] = useState("");
+    const [ correctAnswer, setCorrectAnswer ] = useState("");
 
     const handleAnswer = (ans) => {
         setShowTimer(() => false);
+        resetTimer();
         handleMessage("answer", ans);
         setAnsDis(() => true);
-        roundStarted.current = false;
-        resetTimer();
     }
 
     const handleSubmit = (e, ans) => {
         e.preventDefault();
-        roundStarted.current = false;
         handleAnswer({
             answer: ans,
             timeRemaining: timeRemaining
@@ -79,14 +77,13 @@ const InGame = () => {
 
     useEffect(() => {
         // Question begins
-        if (!gameState.roundFinished && !roundStarted.current) {
+        if (gameState.questionBegins) {
             let ans = []
             for (let answer of gameState.answers) {
                 ans.push({text: answer, selected: false});
             }
             setAnswers([...ans]);
             setTimeout(() => {
-                roundStarted.current = true;
                 setShowTimer(() => true);
                 setShowAnswers(true);
                 timerId.current = setInterval(() => {
@@ -96,7 +93,6 @@ const InGame = () => {
             
         } else if (gameState.roundFinished) {
             // Server has ended round, likely all players have answered/timed out
-            roundStarted.current = false;
             setShowTimer(() => false);
             resetTimer();
             if (isHost) setTimeout(() => handleNext(), 5000);
@@ -104,7 +100,7 @@ const InGame = () => {
         if (gameState.newQuestion) {
             setAnsDis(false);
             setShowAnswers(false);
-            //setCorrectAnswer(() => null);
+            setCorrectAnswer(() => null);
         }
     }, [gameState]);
     

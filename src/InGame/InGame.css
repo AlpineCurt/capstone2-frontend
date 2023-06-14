@@ -14,15 +14,15 @@
     flex-direction: column;
 
 
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }
 
 .InGame-right {
     height: 100%;
     width: 40%;
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
     /* display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,8 +33,8 @@
     height: 20%;
     width: 100%;
 
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }
 
 .InGame-question {

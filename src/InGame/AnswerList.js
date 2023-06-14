@@ -3,7 +3,7 @@ import AnswerBtn from "./AnswerBtn";
 import "./AnswerList.css";
 import { v4 as uuid } from 'uuid';
 
-const AnswerList = ({ answers, disabled, correctAnswer, handleSubmit, setSelected }) => {
+const AnswerList = ({ answers, disabled, handleSubmit, correctAnswer, setSelected }) => {
     
     return (
         <div className="AnswerList">
@@ -11,7 +11,6 @@ const AnswerList = ({ answers, disabled, correctAnswer, handleSubmit, setSelecte
                 <AnswerBtn
                     text={answer.text}
                     disabled={disabled}
-                    //handleSubmit={handleSubmit}
                     key={uuid()}
                     correctAnswer={(correctAnswer === answer.text)}
                     handleSubmit={handleSubmit}
