@@ -1,5 +1,5 @@
 .Game {
     width: 100vw;
     height: 100vh;
-    background-color: rgb(179, 250, 226);
+    background-color: var(--primaryBackground)
 }

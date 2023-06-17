@@ -4,7 +4,7 @@ import MessageBox from "./MessageBox";
 import { v4 as uuid } from 'uuid';
 import Lobby from "../Lobby/Lobby.js";
 import InGame from "../InGame/InGame.js";
-import Results from "../Results.js";
+import Results from "../Results/Results.js";
 
 import "./Layout.css";
 
@@ -42,6 +42,7 @@ const Layout = ({players, gameMode}) => {
                     key={uuid()}
                     status={player.status}
                     score={player.score}
+                    avatarId={player.avatarId}
                 />);
             }
         });
@@ -64,7 +65,8 @@ const Layout = ({players, gameMode}) => {
                 <div className="Layout-mid-center">
                     {gameMode === "lobby" ? <Lobby />
                     : gameMode === "inGame" ? <InGame />
-                    : <Results />}
+                    : <Results players={players}/>}
+                    {/* <Results players={players}/> */}
                 </div>
             </div>
             <div className="Layout-right">

@@ -1,10 +1,12 @@
 import React from "react";
 import "./Avatar.css";
 
-const Avatar = () => {
+
+const Avatar = ({avatarId}) => {
     return (
         <div className="Avatar">
-            <img className="Avatar-pic" src="/temp_pics/kaya.jpg"/>
+            {/* <img className="Avatar-pic" src="/pics/img_trans.jpg"/> */}
+            <div className={`Avatar-pic Avatar-pic-${avatarId}`}></div>
         </div>
     );
 }

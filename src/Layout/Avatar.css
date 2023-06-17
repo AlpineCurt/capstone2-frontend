@@ -1,8 +1,47 @@
 .Avatar {
     margin-top: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 .Avatar-pic {
-    max-height: 74px;
+    width: 74px;
+    height: 74px;
     margin: 2px;
+}
+
+.Avatar-pic-0 {
+    background: url("avatars_scaled.jpg") 0 0;
+}
+
+.Avatar-pic-1 {
+    background: url("avatars_scaled.jpg") 75px 0;
+}
+
+.Avatar-pic-2 {
+    background: url("avatars_scaled.jpg") 149px 0;
+}
+
+.Avatar-pic-3 {
+    background: url("avatars_scaled.jpg") 223px 0;
+}
+
+.Avatar-pic-4 {
+    background: url("avatars_scaled.jpg") 297px 0;
+}
+
+.Avatar-pic-5 {
+    background: url("avatars_scaled.jpg") 371px 0;
+}
+
+.Avatar-pic-6 {
+    background: url("avatars_scaled.jpg") 445px 0;
+}
+
+.Avatar-pic-7 {
+    background: url("avatars_scaled.jpg") 519px 0;
+}
+
+.Avatar-pic-8 {
+    background: url("avatars_scaled.jpg") 593px 0;
 }

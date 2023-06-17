@@ -1,0 +1,45 @@
+.Winner {
+    width: 80%;
+    height: 90%;
+
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
+}
+
+.Winner-winText {
+    height: 30%;
+    width: 100%;
+}
+
+.Winner-winPlayer {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Winner-name {
+    height: 100%;
+    width: 45%;
+
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
+}
+
+.Winner-avatar {
+    height: 100%;
+    width: 18%;
+
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
+}
+
+.Winner-score {
+    height: 100%;
+    width: 27%;
+
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
+}

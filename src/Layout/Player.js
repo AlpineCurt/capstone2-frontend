@@ -5,7 +5,7 @@ import { Card, CardTitle, CardText } from "reactstrap";
 import "./Player.css";
 import GameContext from "../GameContext";
 
-const Player = ({user, location, status="", score=0}) => {
+const Player = ({user, location, avatarId, status="", score=0}) => {
 
     const { chatUpdate, chatMsg } = useContext(GameContext);
     const username = useRef(user);
@@ -48,7 +48,7 @@ const Player = ({user, location, status="", score=0}) => {
             <CardTitle className="Player-Card-username">
                 {username.current} {score}
             </CardTitle>
-            <Avatar />
+            <Avatar avatarId={avatarId}/>
             {spchBubTxt ? <SpeechBubble pointing="top" text={spchBubTxt}/> : null}
             {/* <SpeechBubble pointing="top" text={"We need a test sentence here i kan spel gud!"}/> */}
         </Card>

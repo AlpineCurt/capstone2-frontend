@@ -102,6 +102,44 @@ const Game = () => {
         ws.current.send(JSON.stringify(data));
     }
 
+    const testPlayers = [
+        {
+            name: "Derp",
+            isHost: false,
+            score: 45,
+            status: "",
+            avatarId: 0
+        },
+        {
+            name: "Herp",
+            isHost: false,
+            score: -10,
+            status: "",
+            avatarId: 1
+        },
+        {
+            name: "Slurp",
+            isHost: true,
+            score: 30,
+            status: "",
+            avatarId: 2
+        },
+        {
+            name: "Steve",
+            isHost: false,
+            score: 80,
+            status: "",
+            avatarId: 3
+        },
+        {
+            name: "Barry",
+            isHost: false,
+            score: 55,
+            status: "",
+            avatarId: 4
+        }
+    ];
+
     return (
         <div className="Game">
             <GameContext.Provider value={{
@@ -109,11 +147,11 @@ const Game = () => {
                 chatUpdate, // used by Player
                 chatMsg,  // used by Player
                 gameState, // used by multiple
-                isHost, // used by Lobby
-                //newQ // used by InGame
+                isHost // used by Lobby
                 }}>
                 <Layout
                     players={players}
+                    //players={testPlayers}
                     gameMode={gameState.phase}
                 />
                 <MessageBox messages={chatMessages}/>

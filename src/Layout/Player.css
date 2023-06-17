@@ -11,6 +11,7 @@
     border-style: var(--testBorderPlayer-style);
     padding: 5px;
     margin: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .Player-Card-topBottom {

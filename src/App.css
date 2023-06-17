@@ -1,3 +1,33 @@
+:root {
+  --primaryBackground: rgb(235, 235, 235);
+
+  --color1: #FFF834;
+  --color2: #5603AD;
+  --color3: #F86624;
+  --color4: #D90368;
+  --color5: #05A8AA;
+}
+
+.color1 {
+  color: var(--color1);
+}
+
+.color2 {
+  color: var(--color2);
+}
+
+.color3 {
+  color: var(--color3);
+}
+
+.color4 {
+  color: var(--color4);
+}
+
+.color5 {
+  color: var(--color5);
+}
+
 .App {
   text-align: center;
 }

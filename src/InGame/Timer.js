@@ -1,3 +1,5 @@
+/** This is currently unused. */
+
 import React, { useState, useEffect, useRef } from "react";
 
 import "./Timer.css";

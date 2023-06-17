@@ -1,9 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import GameContext from "../GameContext";
-import AnswerBtn from "./AnswerBtn";
-import Timer from "./Timer";
 import AnswerList from "./AnswerList";
-import { v4 as uuid } from 'uuid';
 import "./InGame.css";
 
 const {decodeHtml} = require("../helperFunctions.js");
