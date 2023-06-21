@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import GameContext from "../GameContext";
-import { Button } from "reactstrap";
+import "./Lobby.css";
 
 const HostView = () => {
 
@@ -12,9 +12,14 @@ const HostView = () => {
     }
 
     return (
-        <div className="Layout-HostView">
-            <p>Click "Begin Game" when all players are present!</p>
-            <Button onClick={handleBeginGame}>Begin Game</Button>
+        <div className="HostView">
+            <p className="beginText">Click "Begin Game" when all players are present!</p>
+            <button
+                className="button-jittery Lobby-button"
+                onClick={handleBeginGame}
+            >
+                Begin Game
+            </button>
         </div>
     );
 }

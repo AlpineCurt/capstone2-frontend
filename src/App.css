@@ -1,11 +1,24 @@
 :root {
-  --primaryBackground: rgb(235, 235, 235);
+  --primaryBackground: rgb(232, 248, 255);
 
   --color1: #FFF834;
   --color2: #5603AD;
   --color3: #F86624;
   --color4: #D90368;
   --color5: #05A8AA;
+
+  --testBorder: 1px;
+  --testBorder-style: solid;
+}
+
+@font-face {
+  font-family: "LuckiestGuy";
+  src: local("LuckiestGuy"), url(./fonts/LuckiestGuy-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Pangolin";
+  src: local("Pangolin"), url(./fonts/Pangolin-Regular.ttf) format("truetype");
 }
 
 .color1 {

@@ -30,8 +30,8 @@
     flex-direction: column;
     justify-content: center;
     
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }
 
 .Layout-right {
@@ -41,8 +41,8 @@
     flex-direction: column;
     justify-content: center;
 
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }
 
 .Layout-mid {
@@ -51,8 +51,8 @@
     display: flex;
     flex-direction: column;
 
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }
 
 .Layout-mid-top {
@@ -64,6 +64,6 @@
 .Layout-mid-center {
     height: var(--midHeight);
 
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }

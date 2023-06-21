@@ -7,7 +7,7 @@ import GameContext from "../GameContext";
 
 const Player = ({user, location, avatarId, status="", score=0}) => {
 
-    const { chatUpdate, chatMsg } = useContext(GameContext);
+    const { chatUpdate, chatMsg, gameState } = useContext(GameContext);
     const username = useRef(user);
     const chatQueue = useRef([]);
     const [ spchBubTxt, setSpchBubTxt ] = useState(null);
@@ -46,10 +46,20 @@ const Player = ({user, location, avatarId, status="", score=0}) => {
                 {status}
             </CardText>
             <CardTitle className="Player-Card-username">
-                {username.current} {score}
+                {username.current}
             </CardTitle>
             <Avatar avatarId={avatarId}/>
-            {spchBubTxt ? <SpeechBubble pointing="top" text={spchBubTxt}/> : null}
+            {gameState.phase !== "lobby" ? 
+                <CardText className="Player-Card-score">
+                    {score}
+                </CardText>
+            : null}
+            {spchBubTxt ?
+                <SpeechBubble
+                    pointing="top"
+                    text={spchBubTxt}
+                />
+                : null}
             {/* <SpeechBubble pointing="top" text={"We need a test sentence here i kan spel gud!"}/> */}
         </Card>
     );    

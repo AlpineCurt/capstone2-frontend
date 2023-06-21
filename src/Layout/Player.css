@@ -7,11 +7,25 @@
 
     min-width: 200px;
     max-width: 200px;
-    border: var(--testBorderPlayer);
-    border-style: var(--testBorderPlayer-style);
     padding: 5px;
     margin: 5px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: LuckiestGuy;
+
+
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
+}
+
+.Player-Card-username {
+    font-size: 25px;
+    color: var(--color5)
+}
+
+.Player-Card-score {
+    font-size: 23px;
+    margin: 4px;
+    color: var(--color2);
+    text-shadow: 0 0 9px rgb(255, 255, 255);
 }
 
 .Player-Card-topBottom {
@@ -26,4 +40,7 @@
 .Player-Card-status {
     margin: 5px;
     height: 21px;
+    font-size: 20px;
+    color: var(--color4);
+    text-shadow: 0 0 9px rgb(255, 255, 255);
 }

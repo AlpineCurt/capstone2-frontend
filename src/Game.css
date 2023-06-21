@@ -1,5 +1,6 @@
 .Game {
     width: 100vw;
+    min-width: 1000px;
     height: 100vh;
     background-color: var(--primaryBackground)
 }

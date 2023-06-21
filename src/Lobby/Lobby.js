@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import HostView from "./HostView";
 import NonHostView from "./NonHostView";
 
+import "./Lobby.css";
+
 const Lobby = () => {
 
     const { gameState, isHost } = useContext(GameContext);
@@ -14,7 +16,10 @@ const Lobby = () => {
             <div className="Lobby">
                 {isHost  ? <HostView />
                 : <NonHostView />}
-                {`Your game code is ${gameId}`}
+                <div className="Lobby-GameId">
+                    <p className="invite">Invite your friends to join with game code:</p>
+                    <p className="GameId">{gameId}</p>
+                </div>
             </div>
         );
     } else {

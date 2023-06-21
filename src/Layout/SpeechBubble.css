@@ -1,5 +1,6 @@
 .speech {
     font-size:  max(min(2vw, 16px), 9px);
+    font-family: Arial, Helvetica, sans-serif;
     color: black;
     background: white;
     position: relative;

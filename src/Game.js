@@ -20,7 +20,6 @@ const Game = () => {
         phase: "lobby",
         choosingCategories: false
     });
-    //const [ newQ, setNewQ ] = useState(true);
 
     /** Primary handler for message from server */
     function handleGameUpdate(msg) {
