@@ -21,12 +21,13 @@
 .InGame-right {
     height: 100%;
     width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
     /* border: var(--testBorder);
     border-style: var(--testBorder-style); */
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
 }
 
 .InGame-timer {
@@ -44,8 +45,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Pangolin;
 
 
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }

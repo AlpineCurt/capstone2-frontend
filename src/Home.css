@@ -1,0 +1,34 @@
+.Home {
+    background-color: var(--primaryBackground);
+    font-family: Pangolin;
+    margin-top: 20%;
+}
+
+h1 {
+    font-size: 65px;
+    margin: 20px;
+    margin-bottom: 30px;
+    font-family: LuckiestGuy;
+    color: var(--color1);
+    text-shadow: 0 0 9px black;
+}
+
+.row {
+    margin: 10px;
+}
+
+.Credits {
+    text-align: left;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.danger {
+    color: #e62e00;
+}
+
+.Home-newGameBtn {
+    font-size: 24px;
+}

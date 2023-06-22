@@ -17,7 +17,7 @@
     font-family: LuckiestGuy;
     color: var(--color1);
     text-shadow: 0 0 9px black;
-    animation: pulse 0.9s infinite ease-out;
+    /* animation: pulse 0.9s infinite ease-out; */
 }
 
 @keyframes pulse {

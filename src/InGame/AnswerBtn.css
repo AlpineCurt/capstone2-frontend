@@ -1,23 +1,101 @@
 .AnswerBtn {
-    margin: 3px;
+    /* margin: 3px;
     background-color: blue;
     border: none;
     color: white;
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    font-size: 13px;
-
+    font-size: 13px; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 10px;
+    width: 85%;
 }
 
-.correct:disabled {
-    border: 3px;
-    border-style: solid;
-    border-color: green;
+.correct.selected {
+    animation: pulse;
+    animation-duration: .4s;
+    animation-iteration-count: infinite;
 }
 
 .selected {
-    border: 3px;
-    border-style: solid;
-    border-color: red;
+    animation-name: select;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
+    font-size: 17px;
+    width: 90%
+}
+
+.notSelected {
+    animation-name: noSelect;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
+    font-size: 13px;
+    width: 80%
+}
+
+.correct.notSelected {
+    animation: pulse;
+    animation-duration: .4s;
+    animation-iteration-count: infinite;
+}
+
+.correct.waiting {
+    animation: pulse;
+    animation-duration: .4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes select {
+    from {
+        font-size: 15px;
+        width: 85%;
+    }
+    to {
+        font-size: 17px;
+        width: 90%
+    }
+}
+
+@keyframes noSelect {
+    from {
+        font-size: 15px;
+        width: 85%;
+    }
+    to {
+        font-size: 13px;
+        width: 80%;
+    }
+}
+
+@keyframes pulseSelected {
+    0% {
+        font-size: 17px;
+        width: 90%
+    }
+    50% {
+        font-size: 15px;
+        width: 85%;
+    }
+    100% {
+        font-size: 17px;
+        width: 90%
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform: scale(1.0);
+    }
+    70% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(0.9);
+    }
 }

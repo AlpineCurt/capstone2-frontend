@@ -20,8 +20,12 @@ const AnswerBtn = ({ text, disabled, handleSubmit, correctAnswer, selected, setS
         <button
             className={"AnswerBtn" +
                 (correctAnswer ? " correct" : "") + 
-                (selected ? " selected" : "")
-                }
+                (selected === "selected" ?
+                    " selected" :
+                    selected === "waiting" ?
+                    " waiting" :
+                    " notSelected")
+            }
             onClick={handleClick}
             disabled={disabled}
         >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./MessageBox.css";
 import { Input, Form, Button } from "reactstrap";
 import GameContext from "../GameContext";
@@ -29,21 +29,21 @@ const MessageBox = ({messages=[]}) => {
                         <ChatMessage name={name} text={text} type={type} key={uuid()}/>
                     ))}
                 </ul>
-            </div>
-            <div className="MessageBox-form">            
-                <Form onSubmit={handleSubmit}>
-                    <Input
-                        id="chatMsg"
-                        name="chatMsg"
-                        className="MessageBox-chatMsg"
-                        placeholder="Chat here!"
-                        type="text"
-                        onChange={handleChange}
-                    />
-                    <Button className="MessageBox-btn">
-                        Send
-                    </Button>
-                </Form>
+                <div className="MessageBox-form">            
+                    <Form onSubmit={handleSubmit}>
+                        <Input
+                            id="chatMsg"
+                            name="chatMsg"
+                            className="MessageBox-chatMsg"
+                            placeholder="Chat here!"
+                            type="text"
+                            onChange={handleChange}
+                        />
+                        <Button className="MessageBox-btn">
+                            Send
+                        </Button>
+                    </Form>
+                </div>
             </div>
         </div>
     );

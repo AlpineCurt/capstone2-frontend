@@ -9,7 +9,6 @@ const Avatar = ({avatarId}) => {
 
     return (
         <div className="Avatar">
-            {/* <img className="Avatar-pic" src="/pics/img_trans.jpg"/> */}
             <div
                 className={`Avatar-pic`}
                 style={{

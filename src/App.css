@@ -9,6 +9,8 @@
 
   --testBorder: 1px;
   --testBorder-style: solid;
+
+  background-color: var(--primaryBackground);
 }
 
 @font-face {
@@ -21,39 +23,8 @@
   src: local("Pangolin"), url(./fonts/Pangolin-Regular.ttf) format("truetype");
 }
 
-.color1 {
-  color: var(--color1);
-}
-
-.color2 {
-  color: var(--color2);
-}
-
-.color3 {
-  color: var(--color3);
-}
-
-.color4 {
-  color: var(--color4);
-}
-
-.color5 {
-  color: var(--color5);
-}
-
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -67,15 +38,28 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  background: var(--color1);
+  color: var(--color2);
+  border: 3px solid var(--color2);
+  border-radius: 50px;
+  padding: 0.3rem 1rem;
+  font-family: Pangolin;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s, ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+label {
+  padding: 5px;
+}
+
+.App-link {
+  color: #61dafb;
 }

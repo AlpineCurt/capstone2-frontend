@@ -18,8 +18,8 @@ class TriviaApi {
         }
     }
 
-    static async checkGameId (gameId) {
-        let res = await this.request(`games/${gameId}`);
+    static async checkGameId (gameId, username) {
+        let res = await this.request(`games/${gameId}?username=${username}`);
         return res;
     }
 

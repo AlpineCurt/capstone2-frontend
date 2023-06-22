@@ -13,7 +13,6 @@ const InGame = () => {
     const timerId = useRef();
     const [ showAnswers, setShowAnswers ] = useState(false);
     const [ showTimer, setShowTimer ] = useState(false);
-    const roundStarted = useRef(false);
     const [ answers, setAnswers ] = useState([]);
     const [ correctAnswer, setCorrectAnswer ] = useState("");
 
@@ -41,10 +40,10 @@ const InGame = () => {
         for (let answer of answers) {
             let tempAns = {
                 text: answer.text,
-                selected: false
+                selected: "notSelected"
             }
             if (answer.text === text) {
-                tempAns.selected = true;
+                tempAns.selected = "selected";
             }
             ans.push(tempAns);
         }
@@ -77,7 +76,7 @@ const InGame = () => {
         if (gameState.questionBegins) {
             let ans = []
             for (let answer of gameState.answers) {
-                ans.push({text: answer, selected: false});
+                ans.push({text: answer, selected: "waiting"});
             }
             setAnswers([...ans]);
             setTimeout(() => {
