@@ -1,12 +1,4 @@
 .AnswerBtn {
-    /* margin: 3px;
-    background-color: blue;
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 13px; */
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 20px;
@@ -21,17 +13,11 @@
 }
 
 .selected {
-    animation-name: select;
-    animation-duration: 0.3s;
-    animation-iteration-count: 1;
     font-size: 17px;
     width: 90%
 }
 
 .notSelected {
-    animation-name: noSelect;
-    animation-duration: 0.3s;
-    animation-iteration-count: 1;
     font-size: 13px;
     width: 80%
 }

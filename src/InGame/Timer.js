@@ -4,41 +4,20 @@ import React, { useState, useEffect, useRef } from "react";
 
 import "./Timer.css";
 
-const Timer = ({ counting, startingTime, handleAnswer, timeRemaining, setTimeRemaining }) => {
+const Timer = ({ timeRemaining }) => {
 
-    //const [timeRemaining, setTimeRemaining] = useState(startingTime);
-    const timerId = useRef();
-
-    const resetTimer = () => {
-        clearInterval(timerId.current);
-        setTimeRemaining(() => startingTime);
-    }
+    const [ dramatic, setDramatic ] = useState(false);
 
     useEffect(() => {
-        //debugger;
-        if (counting) {
-            timerId.current = setInterval(() => {
-                console.log(timerId.current);
-                setTimeRemaining(t => t - 1);
-            }, 1000);
+        if (timeRemaining <= 5 && timeRemaining > 0) {
+            setDramatic(true);
         } else {
-            resetTimer();
+            setDramatic(false);
         }
-    }, [counting]);
-
-    useEffect(() => {
-        if (timeRemaining < 1) {
-            handleAnswer({
-                answer: "timeOut-33",
-                timeRemaining: timeRemaining
-            });
-            resetTimer();
-        }
-        
     }, [timeRemaining]);
 
     return (
-        <div className="Timer">
+        <div className={"Timer" + (dramatic ? " dramatic" : "")}>
             {timeRemaining}
         </div>
     );

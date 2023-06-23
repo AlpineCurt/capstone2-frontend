@@ -16,6 +16,7 @@ const Game = () => {
     const chatMsg = useRef({name: null, text: null});
     const [ isHost, setIsHost] = useState(false);
     const [ chatMessages, setChatMessages ] = useState([]);
+    const [timeRemaining, setTimeRemaining] = useState(30);
     const [ gameState, setGameState ] = useState({
         phase: "lobby",
         choosingCategories: false
@@ -27,6 +28,8 @@ const Game = () => {
             handleChatUpdate(msg);
         } else if (msg.type === "gameStateUpdate") {
             handleGameStateUpdate(msg);
+        } else if (msg.type === "timerRequest") {
+            handleMessage("timerUpdate", timeRemaining);
         }
     }
 
@@ -146,7 +149,9 @@ const Game = () => {
                 chatUpdate, // used by Player
                 chatMsg,  // used by Player
                 gameState, // used by multiple
-                isHost // used by Lobby
+                isHost, // used by Lobby
+                timeRemaining, // used by InGame
+                setTimeRemaining // used by InGame
                 }}>
                 <Layout
                     players={players}

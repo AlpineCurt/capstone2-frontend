@@ -1,24 +1,24 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import GameContext from "../GameContext";
 import AnswerList from "./AnswerList";
+import Timer from "./Timer";
 import "./InGame.css";
 
 const {decodeHtml} = require("../helperFunctions.js");
 
 const InGame = () => {
 
-    const { gameState, handleMessage, isHost } = useContext(GameContext);
+    const { gameState, handleMessage, isHost, timeRemaining, setTimeRemaining } = useContext(GameContext);
     const [ansDis, setAnsDis] = useState(false);
-    const [timeRemaining, setTimeRemaining] = useState(gameState.timeRemaining);
     const timerId = useRef();
     const [ showAnswers, setShowAnswers ] = useState(false);
     const [ showTimer, setShowTimer ] = useState(false);
     const [ answers, setAnswers ] = useState([]);
     const [ correctAnswer, setCorrectAnswer ] = useState("");
+    const [ didAnswer, setDidAnswer ] = useState(false);
 
     const handleAnswer = (ans) => {
-        setShowTimer(() => false);
-        resetTimer();
+        setDidAnswer(() => true);
         handleMessage("answer", ans);
         setAnsDis(() => true);
     }
@@ -29,10 +29,6 @@ const InGame = () => {
             answer: ans,
             timeRemaining: timeRemaining
         });
-    }
-
-    const handleNext = () => {
-        handleMessage("nextQuestion");
     }
 
     const setSelected = (text) => {
@@ -50,29 +46,28 @@ const InGame = () => {
         setAnswers([...ans]);
     }
 
-    const showCorrectAnswer = () => {
-        debugger;
-        setAnswers((ans) => [...ans]);
-    }
-
     /** Timer controls */
     const resetTimer = () => {
         clearInterval(timerId.current);
-        setTimeRemaining(() => gameState.timeRemaining);
+        setDidAnswer(() => false);
     }
 
     useEffect(() => {
         if (timeRemaining < 1) {
-            handleAnswer({
-                answer: "timeOut-33",
-                timeRemaining: timeRemaining
-            });
-            resetTimer();
+            if (!didAnswer) {
+                handleAnswer({
+                    answer: "timeOut-33",
+                    timeRemaining: timeRemaining
+                });
+            }
+            clearInterval(timerId.current);
+        }
+        if (isHost) {
+            handleMessage("timerUpdate", timeRemaining);
         }
     }, [timeRemaining]);
 
     useEffect(() => {
-        //debugger;
         // Question begins
         if (gameState.questionBegins) {
             let ans = []
@@ -80,19 +75,20 @@ const InGame = () => {
                 ans.push({text: answer, selected: "waiting"});
             }
             setAnswers([...ans]);
+            setShowTimer(() => false);
+            setTimeRemaining(() => gameState.timeRemaining);
             setTimeout(() => {
                 setShowTimer(() => true);
                 setShowAnswers(true);
                 timerId.current = setInterval(() => {
                     setTimeRemaining(t => t - 1);
+                    
                 }, 1000);
             }, 4000);
             
         } else if (gameState.roundFinished) {
             // Server has ended round, likely all players have answered/timed out
-            setShowTimer(() => false);
             resetTimer();
-            //if (isHost) setTimeout(() => handleNext(), 5000);
         }
         if (gameState.newQuestion) {
             setAnsDis(false);
@@ -108,7 +104,8 @@ const InGame = () => {
                     {decodeHtml(gameState.question)}
                 </div>
                 <div className="InGame-timer">
-                    { showTimer ? timeRemaining : null }
+                    {/* { showTimer ? timeRemaining : null } */}
+                    { showTimer ? <Timer timeRemaining={timeRemaining}/> : null }
                 </div>
             </div>
             <div className="InGame-right">
