@@ -72,6 +72,7 @@ const InGame = () => {
     }, [timeRemaining]);
 
     useEffect(() => {
+        //debugger;
         // Question begins
         if (gameState.questionBegins) {
             let ans = []
@@ -91,7 +92,7 @@ const InGame = () => {
             // Server has ended round, likely all players have answered/timed out
             setShowTimer(() => false);
             resetTimer();
-            if (isHost) setTimeout(() => handleNext(), 5000);
+            //if (isHost) setTimeout(() => handleNext(), 5000);
         }
         if (gameState.newQuestion) {
             setAnsDis(false);

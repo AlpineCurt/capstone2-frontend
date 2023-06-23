@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Winner from "./Winner.js";
 import Loser from "./Loser.js";
+import { v4 as uuid } from 'uuid';
 
 import "./Results.css";
 
@@ -31,6 +32,7 @@ const Results = ({players}) => {
                         name={player.name}
                         score={player.score}
                         avatarId={player.avatarId}
+                        key={uuid()}
                     />
                 ))}
             </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import Player from "./Player";
-import MessageBox from "./MessageBox";
 import { v4 as uuid } from 'uuid';
 import Lobby from "../Lobby/Lobby.js";
 import InGame from "../InGame/InGame.js";
