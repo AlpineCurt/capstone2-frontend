@@ -95,7 +95,6 @@ const Home = () => {
 
     const checkUsername = () => {
         // validate username
-        //debugger;
         setUsernameTouched(true);
         if (formData.username === "") {
             setUsernameError(() => "Username is required");

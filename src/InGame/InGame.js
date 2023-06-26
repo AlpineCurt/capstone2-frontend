@@ -63,6 +63,7 @@ const InGame = () => {
             clearInterval(timerId.current);
         }
         if (isHost) {
+            // if host, update server with timer count
             handleMessage("timerUpdate", timeRemaining);
         }
     }, [timeRemaining]);
@@ -104,8 +105,7 @@ const InGame = () => {
                     {decodeHtml(gameState.question)}
                 </div>
                 <div className="InGame-timer">
-                    {/* { showTimer ? timeRemaining : null } */}
-                    { showTimer ? <Timer timeRemaining={timeRemaining}/> : null }
+                    { showTimer && <Timer timeRemaining={timeRemaining}/> }
                 </div>
             </div>
             <div className="InGame-right">

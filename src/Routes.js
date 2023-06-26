@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 import Home from "./Home";
 import Game from "./Game";
 
@@ -10,9 +11,9 @@ const Routes = () => {
             <Route exact path="/">
                 <Home />
             </Route>
-            <Route exact path="/games/:gameId">
+            <PrivateRoute exact path="/games/:gameId">
                 <Game />
-            </Route>
+            </PrivateRoute>
         </Switch>
         </>
     );

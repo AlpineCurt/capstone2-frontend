@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import GameContext from "../GameContext";
 import Winner from "./Winner.js";
 import Loser from "./Loser.js";
 import { v4 as uuid } from 'uuid';
@@ -7,6 +8,7 @@ import "./Results.css";
 
 const Results = ({players}) => {
 
+    const { isHost, handleMessage } = useContext(GameContext);
     const [winner, setWinner] = useState({});
     const [losers, setLosers] = useState([]);
 
@@ -16,6 +18,10 @@ const Results = ({players}) => {
         setWinner(playersCopy.shift());
         setLosers([...playersCopy]);
     }, []);
+
+    const resetGame = () => {
+        handleMessage("resetGame");
+    }
 
     return (
         <div className="Results">
@@ -36,6 +42,11 @@ const Results = ({players}) => {
                     />
                 ))}
             </div>
+            {isHost &&
+                <div>
+                    <button onClick={resetGame}>Play Again?</button>
+                </div>
+            }
         </div>
     );
 }

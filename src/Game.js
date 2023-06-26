@@ -16,7 +16,7 @@ const Game = () => {
     const chatMsg = useRef({name: null, text: null});
     const [ isHost, setIsHost] = useState(false);
     const [ chatMessages, setChatMessages ] = useState([]);
-    const [timeRemaining, setTimeRemaining] = useState(30);
+    const [ timeRemaining, setTimeRemaining ] = useState(30);
     const [ gameState, setGameState ] = useState({
         phase: "lobby",
         choosingCategories: false
