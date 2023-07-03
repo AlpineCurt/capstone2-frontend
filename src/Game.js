@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState, useContext } from "react";
 import GameContext from "./GameContext";
 import CurrUserContext from "./CurrUserContext";
 import Layout from "./Layout/Layout.js";
-import Results from "./Results/Results";
 import { useParams } from "react-router-dom";
 import MessageBox from "./Layout/MessageBox";
 import "./Game.css";
