@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import MessageBox from "./Layout/MessageBox";
 import "./Game.css";
 
+const BASE_URL = process.env.REACT_APP_WS_URL || "http://localhost:3001";
+
 const Game = () => {
 
     const { gameId } = useParams();
@@ -64,9 +66,9 @@ const Game = () => {
         
         // Open and initialize websocket when first loaded
         if (localStorage.username) {
-            ws.current = new WebSocket(`ws://localhost:3001/games/${gameId}?username=${localStorage.username}`);
+            ws.current = new WebSocket(`ws://${BASE_URL}/games/${gameId}?username=${localStorage.username}`);
         } else {
-            ws.current = new WebSocket(`ws://localhost:3001/games/${gameId}`);
+            ws.current = new WebSocket(`ws://${BASE_URL}:3001/games/${gameId}`);
         }
         
         ws.current.onopen = (evt) => {
