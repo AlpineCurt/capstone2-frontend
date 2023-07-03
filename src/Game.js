@@ -66,9 +66,9 @@ const Game = () => {
         
         // Open and initialize websocket when first loaded
         if (localStorage.username) {
-            ws.current = new WebSocket(`ws://${BASE_URL}/games/${gameId}?username=${localStorage.username}`);
+            ws.current = new WebSocket(`wss://${BASE_URL}/games/${gameId}?username=${localStorage.username}`);
         } else {
-            ws.current = new WebSocket(`ws://${BASE_URL}:3001/games/${gameId}`);
+            ws.current = new WebSocket(`wss://${BASE_URL}:3001/games/${gameId}`);
         }
         
         ws.current.onopen = (evt) => {
