@@ -19,13 +19,13 @@
 }
 
 .Results-losers {
-    height: 60%;
+    height: 55%;
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: space-between;
+    justify-content: space-between;
+    align-content: center;
     margin-top: 30px;
 
     /* border: var(--testBorder);
@@ -40,4 +40,11 @@
 
 .Results-Loser {
     zoom: 0.65;
+}
+
+.Results-buttons {
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }

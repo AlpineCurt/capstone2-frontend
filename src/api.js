@@ -27,6 +27,26 @@ class TriviaApi {
         let res = await this.request("games/new");
         return res;
     }
+
+    static async tenthHighScore () {
+        let res = await this.request("scores/10thhighscore");
+        return res;
+    }
+
+    static async topTen () {
+        let res = await this.request("scores/topten");
+        return res.topTen;
+    }
+
+    static async newHighScore (username, score) {
+        let res = await this.request("scores/new",
+            {
+                username: username,
+                score: score
+            },
+            "post");
+        return res;
+    }
 }
 
 export default TriviaApi;

@@ -93,6 +93,12 @@ const Home = () => {
         }
     }
 
+    const handleHighScores = (e) => {
+        e.preventDefault();
+
+        history.push(`/highscores`);
+    }
+
     const checkUsername = () => {
         // validate username
         setUsernameTouched(true);
@@ -133,18 +139,21 @@ const Home = () => {
             <div className="row">
                 <button className="Home-newGameBtn" onClick={handleNewGame}>New Game</button>
             </div>
+            <div className="row">
+                <button className="Home-highScoresBtn" onClick={handleHighScores}>High Scores</button>
+            </div>
             <div className="Credits">
                 <p>
-                    Developed by Curt Davidson <a href="https://www.linkedin.com/in/curt-davidson1/">LinkedIn</a>                    
+                    Developed by Curt Davidson <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/curt-davidson1/">LinkedIn</a>                    
                 </p>
                 <p>
-                    Avatar Images credit <a href="https://www.freepik.com/free-vector/different-characters-collection_1111059.htm#query=game%20avatar&position=21&from_view=keyword&track=ais">Image by kubanek</a> on Freepik
+                    Avatar Images credit <a target="_blank" rel="noopener noreferrer" href="https://www.freepik.com/free-vector/different-characters-collection_1111059.htm#query=game%20avatar&position=21&from_view=keyword&track=ais">Image by kubanek</a> on Freepik
                 </p>
                 <p>
-                    Button Styling and Animations <a href="https://twitter.com/meowlivia_">Olivia Ng</a>
+                    Button Styling and Animations <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/meowlivia_">Olivia Ng</a>
                 </p>
                 <p>
-                    Fonts by <a href="https://fonts.google.com/specimen/Pangolin">Kevin Burke</a> and <a href="https://fonts.google.com/specimen/Luckiest+Guy">Astigmatic</a>
+                    Fonts by <a target="_blank" rel="noopener noreferrer" href="https://fonts.google.com/specimen/Pangolin">Kevin Burke</a> and <a href="https://fonts.google.com/specimen/Luckiest+Guy">Astigmatic</a>
                 </p>
             </div>
         </div>

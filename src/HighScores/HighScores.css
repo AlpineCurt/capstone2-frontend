@@ -1,0 +1,24 @@
+.HighScores {
+    height: 100%;
+    width: 100%;
+    font-family: LuckiestGuy;
+    color: var(--color1);
+    text-shadow: 0 0 9px black;
+    margin-top: 10%;
+
+    display: flex;
+    flex-direction: column;
+
+    --testBorder: 1px;
+    --testBorder-style: solid;
+
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
+}
+
+.HighScores-display {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
