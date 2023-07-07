@@ -36,6 +36,11 @@ const Results = ({players}) => {
         history.push(`/highscores`);
     }
 
+    const handleHomeBtn = (e) => {
+        e.preventDefault();
+        history.push(`/`);
+    }
+
     return (
         <div className="Results">
             <div className="Results-winner">
@@ -63,6 +68,9 @@ const Results = ({players}) => {
                 }
                 <div>
                     <button onClick={handleHighScoresBtn}>High Scores</button>
+                </div>
+                <div>
+                    <button onClick={handleHomeBtn}>Home</button>
                 </div>
             </div>
             

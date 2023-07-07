@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import MessageBox from "./Layout/MessageBox";
 import "./Game.css";
 
-const BASE_URL = process.env.REACT_APP_WS_URL || "http://localhost:3001";
+const BASE_URL = process.env.REACT_APP_WS_URL || "localhost:3001";
 
 const Game = () => {
 
@@ -23,6 +23,13 @@ const Game = () => {
         phase: "lobby",
         choosingCategories: false
     });
+
+    let wsBaseString;
+    if (process.env.NODE_ENV === "production") {
+        wsBaseString = `wss://${BASE_URL}/games/${gameId}`;
+    } else {
+        wsBaseString = `ws://${BASE_URL}/games/${gameId}`;
+    }    
 
     /** Primary handler for message from server */
     function handleGameUpdate(msg) {
@@ -66,9 +73,11 @@ const Game = () => {
         
         // Open and initialize websocket when first loaded
         if (localStorage.username) {
-            ws.current = new WebSocket(`wss://${BASE_URL}/games/${gameId}?username=${localStorage.username}`);
+            // console.log(process.env.NODE_ENV);
+            // if (process.env.NODE_ENV)
+            ws.current = new WebSocket(`${wsBaseString}?username=${localStorage.username}`);
         } else {
-            ws.current = new WebSocket(`wss://${BASE_URL}:3001/games/${gameId}`);
+            ws.current = new WebSocket(wsBaseString);
         }
         
         ws.current.onopen = (evt) => {

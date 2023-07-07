@@ -16,6 +16,7 @@ const InGame = () => {
     const [ answers, setAnswers ] = useState([]);
     const [ correctAnswer, setCorrectAnswer ] = useState("");
     const [ didAnswer, setDidAnswer ] = useState(false);
+    const [ timerRunning, setTimerRunning ] = useState(false);
 
     const handleAnswer = (ans) => {
         setDidAnswer(() => true);
@@ -50,6 +51,7 @@ const InGame = () => {
     const resetTimer = () => {
         clearInterval(timerId.current);
         setDidAnswer(() => false);
+        setTimerRunning(() => false);
     }
 
     useEffect(() => {
@@ -80,6 +82,7 @@ const InGame = () => {
             setTimeRemaining(() => gameState.timeRemaining);
             setTimeout(() => {
                 setShowTimer(() => true);
+                setTimerRunning(true);
                 setShowAnswers(true);
                 timerId.current = setInterval(() => {
                     setTimeRemaining(t => t - 1);
@@ -100,12 +103,22 @@ const InGame = () => {
     
     return (
         <div className="InGame">
+            
             <div className="InGame-left">
+                <div className="InGame-QNum">
+                    Question <br/>
+                    {gameState.question_number} of {gameState.total_questions}
+                </div>
                 <div className="InGame-question">
                     {decodeHtml(gameState.question)}
                 </div>
                 <div className="InGame-timer">
-                    { showTimer && <Timer timeRemaining={timeRemaining}/> }
+                    { showTimer && 
+                        <Timer
+                            timeRemaining={timeRemaining}
+                            timerRunning={timerRunning}
+                        />
+                    }
                 </div>
             </div>
             <div className="InGame-right">
