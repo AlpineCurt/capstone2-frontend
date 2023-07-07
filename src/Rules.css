@@ -1,0 +1,27 @@
+.Rules {
+    font-family: Pangolin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Rules ol {
+    width: 70%;
+    text-align: left;
+    font-size: 25px;
+    list-style: decimal;
+}
+
+.Rules li span {
+    position: relative;
+    left: 20px;
+}
+
+.Credits {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.quote {
+    font-size: 20px;
+}

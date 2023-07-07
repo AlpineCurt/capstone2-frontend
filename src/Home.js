@@ -95,8 +95,12 @@ const Home = () => {
 
     const handleHighScores = (e) => {
         e.preventDefault();
-
         history.push(`/highscores`);
+    }
+
+    const handleRules = (e) => {
+        e.preventDefault();
+        history.push("/rules");
     }
 
     const checkUsername = () => {
@@ -141,20 +145,7 @@ const Home = () => {
             </div>
             <div className="row">
                 <button className="Home-highScoresBtn" onClick={handleHighScores}>High Scores</button>
-            </div>
-            <div className="Credits">
-                <p>
-                    Developed by Curt Davidson <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/curt-davidson1/">LinkedIn</a>                    
-                </p>
-                <p>
-                    Avatar Images credit <a target="_blank" rel="noopener noreferrer" href="https://www.freepik.com/free-vector/different-characters-collection_1111059.htm#query=game%20avatar&position=21&from_view=keyword&track=ais">Image by kubanek</a> on Freepik
-                </p>
-                <p>
-                    Button Styling and Animations <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/meowlivia_">Olivia Ng</a>
-                </p>
-                <p>
-                    Fonts by <a target="_blank" rel="noopener noreferrer" href="https://fonts.google.com/specimen/Pangolin">Kevin Burke</a> and <a href="https://fonts.google.com/specimen/Luckiest+Guy">Astigmatic</a>
-                </p>
+                <button className="Home-rulesCreditsBtn" onClick={handleRules}>Rules and Credits</button>
             </div>
         </div>
     );

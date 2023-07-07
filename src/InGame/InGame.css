@@ -24,12 +24,8 @@
     margin: 0;
     height: 15%;
 
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
-}
-
-.InGame-QNum p {
-    
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }
 
 .InGame-right {
@@ -40,8 +36,8 @@
     justify-content: center;
     align-items: center;
 
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }
 
 .InGame-timer {
@@ -49,8 +45,8 @@
     width: 100%;
     max-block-size: 20%;
 
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }
 
 .InGame-question {
@@ -63,6 +59,6 @@
     font-family: Pangolin;
 
 
-    border: var(--testBorder);
-    border-style: var(--testBorder-style);
+    /* border: var(--testBorder);
+    border-style: var(--testBorder-style); */
 }

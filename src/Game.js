@@ -73,8 +73,6 @@ const Game = () => {
         
         // Open and initialize websocket when first loaded
         if (localStorage.username) {
-            // console.log(process.env.NODE_ENV);
-            // if (process.env.NODE_ENV)
             ws.current = new WebSocket(`${wsBaseString}?username=${localStorage.username}`);
         } else {
             ws.current = new WebSocket(wsBaseString);
