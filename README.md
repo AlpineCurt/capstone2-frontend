@@ -14,7 +14,7 @@ Using websockets, a each player maintains a constant connection to the server to
 
 ### Trivia Database
 
-Using the [Open Trivia DB](https://opentdb.com/), the game provides over 4,000 multiple-choice questions.  If users play more than one game together, a token is used to ensure they don't get the same questions again.
+Using the [Open Trivia DB](https://opentdb.com/), the game provides over 4,000 multiple-choice questions.  If users play more than one game together, a token is used to ensure they don't get the same questions again.  Note:  The front end communicates with only the [back end](https://github.com/AlpineCurt/capstone2-backend).  API calls to OpenTDB are handled there.
 
 ### Chatting
 
@@ -24,11 +24,11 @@ Multi-player games need a way for users to communicate, and chatting is provided
 
 High scores are kept using a PostgreSQL database.  When a player achieves a new high score, they're added to the database. 
 
-## Testing
+## Commands
 
-```
-npm run test
-```
+```npm run start``` - Start the app in produciton mode.  
+```npm run start:debug``` - Start the app in development mode.  
+```npm run test``` - Run all unit and integration tests.  
 
 ## User Flow
 
